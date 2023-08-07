@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel
-from PyQt5.QtCore        import QTimer
+
 
 class WhidgetMain(QMainWindow):
 
@@ -10,15 +10,10 @@ class WhidgetMain(QMainWindow):
 
         self.widget_statico()
         self.widget_movel_bateria()
+
+        #QTimer
+        self.funcao_qtimer()
        
-        qtimer_1 = QTimer        ( self )
-
-        qtimer_1.setInterval     ( 5000 )
-        qtimer_1.start           ()
-
-        #chamada de funçãO
-        qtimer_1.timeout.connect ( self.series_funcoes1 )
-
     def widget_statico(self):
 
         LABEL_MAIN_1 = QLabel(self)
@@ -65,7 +60,7 @@ class WhidgetMain(QMainWindow):
             "color: #FFFF00; font: bold; font-size: 20px ")
         
         self.LABEL_BAT3 = QLabel( self) 
-        self.LABEL_BAT3.setGeometry(140, 60,50, 50) 
+        self.LABEL_BAT3.setGeometry(150, 60,90, 50) 
         self.LABEL_BAT3.setStyleSheet(
             "color: #FF0000; font: bold; font-size: 25px ")
         
@@ -79,8 +74,4 @@ class WhidgetMain(QMainWindow):
         self.LABEL_BAT2.setStyleSheet(
             "color: #FFD700; font: bold; font-size: 15px ")
         
-        self.series_funcoes1()
         
-    def series_funcoes1(self):
-
-        self.bateria_psutil()

@@ -4,6 +4,7 @@ from PyQt5 import Qt
 from PyQt5.QtGui      import QIcon
 
 from class_universe.variaveis_init import VariaveisInit
+from class_universe.exe_qtime import ClassQTime
 
 from app_index.index_front import WhidgetMain
 from app_index.ind_bateria import Bateria
@@ -11,8 +12,9 @@ from app_index.ind_bateria import Bateria
 from janela_key.key import KeyBoard
 
 class Principal(
-    WhidgetMain,
-    KeyBoard,Bateria,
+    WhidgetMain,Bateria,
+    KeyBoard,
+    ClassQTime,
     QMainWindow):
 
     def __init__(self):
