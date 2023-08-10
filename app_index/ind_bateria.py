@@ -35,17 +35,12 @@ class Bateria:
     ##QTIMER#############################################################
     def processo_qtime_bateria(self,NB):
 
-        if NB < 20 or NB > 80:
+        if NB < VariaveisInit.BATERIA_MINIMA or (
+             NB > VariaveisInit.BATERIA_MAXIMA):
 
             VariaveisInit.VAV_QTIME_BATERIA = (
              VariaveisInit.VAV_QTIME_BATERIA + 1)
-            
-            self.bateria_pt("AVISO")
-
-        else:
-             
-             self.bateria_pt("")
-            
+                       
     def bateria_pt(self,pt_bateria):
          
           self.LABEL_BAT3.setText("{}".format(pt_bateria))

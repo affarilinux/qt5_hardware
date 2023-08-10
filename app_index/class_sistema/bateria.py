@@ -1,5 +1,6 @@
 import psutil
 
+from class_universe.variaveis_init import VariaveisInit
 class ClasseBateria:
 
     def estado_bateria_sys(self):
@@ -13,10 +14,10 @@ class ClasseBateria:
 
         if informacao_carregamento   == True :
                 
-            est = "CA"
+            est = VariaveisInit.BATERIA_CARREGANDO
                 
         elif informacao_carregamento == False :
-                est = "DESC"
+                est = VariaveisInit.BATERIA_DESCARREGANDO
 
         return est
     

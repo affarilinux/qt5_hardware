@@ -59,17 +59,35 @@ class ClassQTime:
 
             sys_bateria = ClasseBateria()
 
-            if int(sys_bateria.nivel_bateria_sys1()) < 20:
+            if int(sys_bateria.nivel_bateria_sys1()) < (
+                VariaveisInit.BATERIA_MINIMA
+                ):
 
-                if sys_bateria.estado_bateria_sys() == "DESC":
-
-                    self.ativar_som()
-
-            elif int(sys_bateria.nivel_bateria_sys1()) > 80:
-
-                if sys_bateria.estado_bateria_sys() == "CA":
+                if sys_bateria.estado_bateria_sys() == (
+                    VariaveisInit.BATERIA_DESCARREGANDO
+                ):
 
                     self.ativar_som()
+                    self.bateria_pt(VariaveisInit.AVISO)
+                
+                else:
+             
+                    self.bateria_pt(VariaveisInit.ASPAS)
+
+            elif int(sys_bateria.nivel_bateria_sys1()) > (
+                VariaveisInit.BATERIA_MAXIMA
+            ):
+
+                if sys_bateria.estado_bateria_sys() == (
+                    VariaveisInit.BATERIA_CARREGANDO
+                ):
+
+                    self.ativar_som()
+                    self.bateria_pt(VariaveisInit.AVISO)
+
+                else:
+             
+                    self.bateria_pt(VariaveisInit.ASPAS)
 
     def ativar_som(self):
 

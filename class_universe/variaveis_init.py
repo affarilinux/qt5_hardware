@@ -8,3 +8,15 @@ class VariaveisInit:
     VAV_QTIMER = 0
 
     SOM = 0
+
+    BATERIA_MINIMA = 20
+
+    BATERIA_MAXIMA = 80
+
+    BATERIA_CARREGANDO = "CA"
+
+    BATERIA_DESCARREGANDO = "DESC"
+
+    AVISO = "AVISO"
+
+    ASPAS = ""
