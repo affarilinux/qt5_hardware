@@ -1,8 +1,11 @@
 from PyQt5.QtCore        import QTimer
+from PyQt5 import QtCore
 
 from class_universe.variaveis_init import VariaveisInit
 
 from som.class_som import Som
+
+from app_index.class_sistema.bateria import ClasseBateria
 
 class ClassQTime:
 
@@ -39,10 +42,10 @@ class ClassQTime:
         
         if VariaveisInit.VAV_QTIME_BATERIA == 3:
 
-            self.funcao_vav_qtimer()
             VariaveisInit.VAV_QTIME_BATERIA = 0
+            self.funcao_vav_qtimer()
 
-        self.ativar_som()
+        self.som_estado_nivel()
        
     def funcao_vav_qtimer(self):
 
@@ -50,15 +53,37 @@ class ClassQTime:
 
             VariaveisInit.VAV_QTIMER = 1
 
-    def ativar_som(self):
+    def som_estado_nivel(self):
 
         if VariaveisInit.VAV_QTIMER == 1:
 
-            som = Som()
-            som.funcao_som()
+            sys_bateria = ClasseBateria()
 
-            VariaveisInit.VAV_QTIMER = 0
+            if int(sys_bateria.nivel_bateria_sys1()) < 20:
 
-    
+                if sys_bateria.estado_bateria_sys() == "DESC":
+
+                    self.ativar_som()
+
+            elif int(sys_bateria.nivel_bateria_sys1()) > 80:
+
+                if sys_bateria.estado_bateria_sys() == "CA":
+
+                    self.ativar_som()
+
+    def ativar_som(self):
+
+        self.LABEL_som1.setText("som")
+
+        som = Som()
+        som.funcao_som()
+
+        VariaveisInit.VAV_QTIMER = 0
+
+        QtCore.QTimer.singleShot(3000, self.desativar_labelsom2)
+
+    def desativar_labelsom2(self):
+
+        self.LABEL_som1.setText("")
 
         

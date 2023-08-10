@@ -7,7 +7,7 @@ class Som:
     def funcao_som(self):
 
         sound = AudioSegment.from_file(
-                file = 'Objetos/jk.wav', format = "wav")
+                file = "/home/waghtom/Downloads/CTRL-C/envs/hardware/qt_hard/Objetos/jk.wav", format = "wav")
         play(sound)
         
     

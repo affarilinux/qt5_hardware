@@ -30,5 +30,16 @@ class KeyBoard(QMainWindow):
 
             VariaveisInit.SOM = 0
 
-        
+        self.funcao_label_som()
+
+    def funcao_label_som(self):
+
+        if VariaveisInit.SOM != "a":
+
+            self.LABEL_som.setText("SOM")
+
+        else:
+
+            self.LABEL_som.setText("S/SOM")
+
 

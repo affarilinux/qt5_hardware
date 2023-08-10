@@ -10,9 +10,11 @@ class WhidgetMain(QMainWindow):
 
         self.widget_statico()
         self.widget_movel_bateria()
+        self.widget_som()
 
         #QTimer
         self.funcao_qtimer()
+        self.funcao_label_som()
        
     def widget_statico(self):
 
@@ -40,17 +42,29 @@ class WhidgetMain(QMainWindow):
         LABEL_MAIN_4.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
 
         LABEL_MAIN_5 = QLabel(self)
-        LABEL_MAIN_5.setText("vs 1.0")
+        LABEL_MAIN_5.setText("vs 2.2")
         LABEL_MAIN_5.move(70,160)
         LABEL_MAIN_5.resize(50,15)
         LABEL_MAIN_5.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
 
         LABEL_MAIN_6 = QLabel(self)
-        LABEL_MAIN_6.setText("nivel bateria")
+        LABEL_MAIN_6.setText("SOM")
         LABEL_MAIN_6.move(110,160)
         LABEL_MAIN_6.resize(60,15)
         LABEL_MAIN_6.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
 
+    def widget_som(self):
+
+        self.LABEL_som = QLabel( self) 
+        self.LABEL_som.setGeometry(195, 160,30, 15) 
+        self.LABEL_som.setStyleSheet(
+            "color: #FF0000; font: bold; font-size: 8px ")
+
+        self.LABEL_som1 = QLabel( self) 
+        self.LABEL_som1.setGeometry(225, 160,20, 15) 
+        self.LABEL_som1.setStyleSheet(
+            "color: #FFFF00; font: bold; font-size: 8px ")
+        
     def widget_movel_bateria(self):
 
         self.LABEL_BAT = QLabel( self) 
