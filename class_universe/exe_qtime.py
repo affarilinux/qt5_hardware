@@ -21,38 +21,43 @@ class ClassQTime:
         #chamada de funçãO
         qtimer_1.timeout.connect ( self.funcao_qtimer )
 
-        qtimer_2 = QTimer        ( self )
+        '''qtimer_2 = QTimer        ( self )
 
         qtimer_2.setInterval     ( 15000 )
         qtimer_2.start           ()
 
         #chamada de funçãO
-        qtimer_2.timeout.connect ( self.funcao_qtimer1 )
+        qtimer_2.timeout.connect ( self.funcao_qtimer1 )'''
 
     """
         front end
     """
     def funcao_qtimer(self):
 
+        # funcoes init
         self.bateria_psutil()
+
+        #qtimer
+        self.funcao_qtimer1()
 
     """som
     """
     def funcao_qtimer1(self):
         
         if VariaveisInit.VAV_QTIME_BATERIA == 3:
-
+          
             VariaveisInit.VAV_QTIME_BATERIA = 0
             self.funcao_vav_qtimer()
 
         self.som_estado_nivel()
-       
+        VariaveisInit.VAV_QTIMER = 0
+
     def funcao_vav_qtimer(self):
 
         if VariaveisInit.SOM != "a":
 
             VariaveisInit.VAV_QTIMER = 1
-
+            
     def som_estado_nivel(self):
 
         if VariaveisInit.VAV_QTIMER == 1:
@@ -62,18 +67,18 @@ class ClassQTime:
             if int(sys_bateria.nivel_bateria_sys1()) < (
                 VariaveisInit.BATERIA_MINIMA
                 ):
-
+                
                 if sys_bateria.estado_bateria_sys() == (
                     VariaveisInit.BATERIA_DESCARREGANDO
                 ):
-
+    
+                    self.bateria_aprensentar(VariaveisInit.AVISO)
                     self.ativar_som()
-                    self.bateria_pt(VariaveisInit.AVISO)
-                
-                else:
-             
-                    self.bateria_pt(VariaveisInit.ASPAS)
 
+                else:
+                    
+                    self.bateria_aprensentar(VariaveisInit.ASPAS)
+                
             elif int(sys_bateria.nivel_bateria_sys1()) > (
                 VariaveisInit.BATERIA_MAXIMA
             ):
@@ -81,13 +86,13 @@ class ClassQTime:
                 if sys_bateria.estado_bateria_sys() == (
                     VariaveisInit.BATERIA_CARREGANDO
                 ):
-
+                    
+                    self.bateria_aprensentar(VariaveisInit.AVISO)
                     self.ativar_som()
-                    self.bateria_pt(VariaveisInit.AVISO)
-
+                    
                 else:
-             
-                    self.bateria_pt(VariaveisInit.ASPAS)
+                 
+                    self.bateria_aprensentar(VariaveisInit.ASPAS)
 
     def ativar_som(self):
 
@@ -95,8 +100,6 @@ class ClassQTime:
 
         som = Som()
         som.funcao_som()
-
-        VariaveisInit.VAV_QTIMER = 0
 
         QtCore.QTimer.singleShot(3000, self.desativar_labelsom2)
 

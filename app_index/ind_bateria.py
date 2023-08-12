@@ -11,7 +11,7 @@ class Bateria:
         
         if not bateria_class1.nivel_bateria_sys:
              
-            self.bateria_pt("S/I")
+            self.bateria_aprensentar("S/I")
 
         else:
             
@@ -41,6 +41,6 @@ class Bateria:
             VariaveisInit.VAV_QTIME_BATERIA = (
              VariaveisInit.VAV_QTIME_BATERIA + 1)
                        
-    def bateria_pt(self,pt_bateria):
+    def bateria_aprensentar(self,pt_bateria):
          
           self.LABEL_BAT3.setText("{}".format(pt_bateria))
