@@ -9,6 +9,8 @@ class VariaveisInit:
 
     SOM = 0
 
+    STR_SOM = "SOM"
+
     BATERIA_MINIMA = 20
     BATERIA_MAXIMA = 80
 
@@ -19,3 +21,8 @@ class VariaveisInit:
     AVISO = "AVISO"
 
     ASPAS = ""
+
+    STR_A = "a"
+
+    TRUE = True
+    FALSE = False

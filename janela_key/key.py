@@ -22,9 +22,9 @@ class KeyBoard(QMainWindow):
 
     def key_som(self):
 
-        if VariaveisInit.SOM != "a":
+        if VariaveisInit.SOM != VariaveisInit.STR_A:
 
-            VariaveisInit.SOM = "a"
+            VariaveisInit.SOM = VariaveisInit.STR_A
 
         else:
 
@@ -34,12 +34,13 @@ class KeyBoard(QMainWindow):
 
     def funcao_label_som(self):
 
-        if VariaveisInit.SOM != "a":
+        if VariaveisInit.SOM != VariaveisInit.STR_A:
 
-            self.LABEL_som.setText("SOM")
+            self.bateria_labelsom(VariaveisInit.STR_SOM)
 
         else:
 
-            self.LABEL_som.setText("S/SOM")
+            self.bateria_labelsom("S/SOM")
+            
 
 

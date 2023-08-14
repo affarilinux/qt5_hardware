@@ -13,7 +13,8 @@ class WhidgetMain(QMainWindow):
         self.widget_som()
 
         #QTimer
-        self.funcao_qtimer()
+        self.qtimer_loop5()
+        #key
         self.funcao_label_som()
        
     def widget_statico(self):
@@ -42,13 +43,13 @@ class WhidgetMain(QMainWindow):
         LABEL_MAIN_4.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
 
         LABEL_MAIN_5 = QLabel(self)
-        LABEL_MAIN_5.setText("vs 2.4")#SISTEMA VAERIAVEL DE VERSOES
+        LABEL_MAIN_5.setText("vs 2.5")#SISTEMA VAERIAVEL DE VERSOES
         LABEL_MAIN_5.move(70,160)
         LABEL_MAIN_5.resize(50,15)
         LABEL_MAIN_5.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
 
         LABEL_MAIN_6 = QLabel(self)
-        LABEL_MAIN_6.setText("ICONE/SOM") #SISTEMA VARIAVEL DE VERSOES
+        LABEL_MAIN_6.setText("CODIGO") #SISTEMA VARIAVEL DE VERSOES
         LABEL_MAIN_6.move(110,160)
         LABEL_MAIN_6.resize(60,15)
         LABEL_MAIN_6.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 8px }')
