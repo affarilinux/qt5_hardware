@@ -22,8 +22,9 @@ class ClassQTime:
     def qtimer_loop5(self):
 
         self.funcao_qtimer_bateria()
+        self.funcao_qtimer_ram()
     """
-        execusao
+        execusao som
     """
     def funcao_vav_qtimer(self):
 
