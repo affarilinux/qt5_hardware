@@ -23,6 +23,9 @@ class ClassQTime:
 
         self.funcao_qtimer_bateria()
         self.funcao_qtimer_ram()
+        self.FC_pt_temperatura()
+        self.FC_pcprocessador()
+        self.leitura_fans()
     """
         execusao som
     """

@@ -45,7 +45,7 @@ class ClassePsutil:
         informacao           = psutil.virtual_memory ()
 
         total                = informacao.total
-        usada                = informacao.active
+        usada                = informacao.used
 
         # calcula porcentagm
         calculo_por_centagem      = ( usada * 100 ) / total
@@ -53,7 +53,7 @@ class ClassePsutil:
         # filtra o float
         calculo_filtro_informacao = round ( calculo_por_centagem, 2 )
 
-        return calculo_filtro_informacao
+        return calculo_filtro_informacao,usada
 
     def psutil_ram_teste(self):
 
@@ -64,7 +64,14 @@ class ClassePsutil:
     ###############################################
     """                  temperatura            """
 
-    '''def temperatura_lib(self):
+    def temperatura_lib1(self):
+
+        wifi_temp    = psutil.sensors_temperatures()['iwlwifi_1'][0]
+        wifi_temp_cur  = wifi_temp.current
+        
+        return wifi_temp_cur
+    
+    def temperatura_lib2(self):
 
         processador_temp = psutil.sensors_temperatures()['acpitz'][0]
 
@@ -72,125 +79,52 @@ class ClassePsutil:
         core_temp1       = psutil.sensors_temperatures()['coretemp'][1]
         core_temp2       = psutil.sensors_temperatures()['coretemp'][2]
 
-        if not core_temp:
+        processador_temp_cur = processador_temp.current
 
-            self.BUTON_TM.setText("Temperatura\n S\I")
+        core_temp_cur = core_temp.current
+        core_temp1_cur = core_temp1.current
+        core_temp2_cur = core_temp2.current
 
-        else:
-
-            processador_temp_cur = processador_temp.current
-
-            core_temp_cur = core_temp.current
-            core_temp1_cur = core_temp1.current
-            core_temp2_cur = core_temp2.current
-
-            try:
-                wifi_temp    = psutil.sensors_temperatures()['iwlwifi_1'][NUM_0]
-                wifi_temp_cur  = wifi_temp.current
-
-                self.calculo_temperatura (processador_temp_cur, core_temp_cur,
-                    core_temp1_cur,core_temp2_cur, wifi_temp_cur,NUM_5 )
-
-                
-            except KeyError:
-
-                self.calculo_temperatura (processador_temp_cur, core_temp_cur,
-                    core_temp1_cur,core_temp2_cur, NUM_0,NUM_4 )
-
-         ##---------------------------------------------------------------------
-       
-    def calculo_temperatura(self,ptc,ctc,ctc1,ctc2,wtc,div):
-
-        calculosoma = (ptc + ctc  + ctc1 + ctc2 + wtc ) / div
-
-        self.ativar_banco()
-
-        self.cursorsq.execute("SELECT TEMP_MIN,TEMP_MAX,TEMP_APRESENTAR FROM  TEMPERATURA WHERE ID_TEMP = ?",(NUM_1,))
-        SELEC = self.cursorsq.fetchone()
-
-        if SELEC[NUM_2] ==  NUM_1:
-            
-            if ptc >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_0,ptc,calculosoma)
-
-            elif  ctc >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_1,ctc,calculosoma)
-            
-            elif  ctc1 >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_2,ctc1,calculosoma)
-
-            elif  ctc2 >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_3,ctc2,calculosoma)
-
-            elif  wtc >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_4,wtc,calculosoma)
-            
-            elif  calculosoma >= SELEC[NUM_1]:
-                
-                self.ap_temp_t1(NUM_5,calculosoma,calculosoma)
-            
-
-            ##------------------------------------
-            else:
-                self.apresentar_temp(TEMPERATURA_LT,calculosoma)
-                
-                self.var_if_temp()
-
-        elif SELEC[NUM_2] == NUM_0:
-
-            self.apresentar_temp(TEMPERATURA_LT,calculosoma)
-
-            self.var_if_temp()
-
-        self.sair_banco()
-    ##------------------------------------------------------------------
-    def ap_temp_t1(self,i1,ap1,calc):
-
-        self.var_2 = self.var_2 + NUM_1
-
-        if self.var_2 == NUM_1:
-    
-            if i1 == NUM_0:
-                self.apresentar_temp("PLACA MAE",ap1)
-
-            elif i1 == NUM_1:
-                self.apresentar_temp("CORE",ap1)
-            
-            elif i1 == NUM_2:
-                self.apresentar_temp("CORE 1",ap1)
-            
-            elif i1 == NUM_3:
-                self.apresentar_temp("CORE 2",ap1)
-            
-            elif i1 == NUM_4:
-                self.apresentar_temp("WIFI",ap1)
-
-            elif i1 == NUM_5:
-                self.apresentar_temp(TEMPERATURA_LT,ap1)
-
-            self.funcao_if_son()
-            
-        ##----------------------------------------
-        elif self.var_2 != NUM_0:
-
-            self.apresentar_temp(TEMPERATURA_LT,calc)
-
-            if self.var_2 == NUM_3:
-                
-                self.var_2 = NUM_0
-
-    def var_if_temp(self):
-
-        if self.var_2 != NUM_0:
-    
-            self.var_2 = NUM_0
-    ##__________________________________________________________________
-    def apresentar_temp(self,a1,a2):
-        self.BUTON_TM.setText("{}\n{} ºC".format(a1,a2))'''
-
+        return (processador_temp_cur,core_temp_cur, 
+                core_temp1_cur,core_temp2_cur)
         
+    ###############################################
+    """                  processador            """
+
+    def processador_freq_teste(self):
+
+        teste1x = psutil.cpu_freq ()
+
+        return teste1x
+    
+    def processador_frequencia(self):
+        
+        informacao_sistema_1 = psutil.cpu_freq ()
+
+        # puxa as informações e adiciona nas variaveis
+        maximo_processador   = informacao_sistema_1.max
+        dados_presente       = informacao_sistema_1.current
+
+        # calcula porcentagm
+        calculo_processos_dados     = ( dados_presente * 100 ) / maximo_processador       
+
+        # filtra o float
+        filtra_calculo_sistema = round ( calculo_processos_dados, 2)
+
+        return filtra_calculo_sistema
+
+    ###############################################
+    """                cooler                   """
+    def cooler_psutil(self):
+
+        fans_leiint = psutil.sensors_fans()
+
+        return fans_leiint
+       
+    ###############################################
+    """                 disco                   """
+
+    '''for fo in particao:
+
+    particao1 = psutil.disk_usage(fo.mountpoint)
+    print("{},{}\n".format(particao1.total,particao1.used))'''

@@ -1,28 +1,20 @@
 from class_universe.psutil_py import ClassePsutil
 from class_universe.variaveis_init import VariaveisInit
 
-class QtimerRam(ClassePsutil):
+class ProcessoRam(ClassePsutil):
 
     def funcao_qtimer_ram(self):
 
         if not self.psutil_ram_teste():
 
-            print("certo")
-
+            self.ram_labelr1("S/I")
+            
         else:
 
-            self.ram_psutil() ## ram
+            nivel_ram = self.psutil_ram()
 
-    
-    def FC_qtimer_ram_soma(self,NR):
-
-        if NR >= 90:
-
-            VariaveisInit.VAV_QTIME_RAM = (
-                VariaveisInit.VAV_QTIME_RAM +1)
+            self.ram_labelr1(nivel_ram[0])
             
-    def FC_qtimer_ram_soma3(self):
+            mm1 = str(nivel_ram[1])
+            self.ram_label_memoria(mm1[:-6])
 
-        if VariaveisInit.VAV_QTIME_RAM == 3:
-
-            VariaveisInit.VAV_QTIME_RAM = 0

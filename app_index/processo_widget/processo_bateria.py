@@ -1,7 +1,7 @@
 from class_universe.variaveis_init import VariaveisInit
 from class_universe.psutil_py import ClassePsutil
 
-class QtimerBateria(ClassePsutil):
+class ProcessoBateria(ClassePsutil):
 
     def funcao_qtimer_bateria(self):
 

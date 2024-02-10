@@ -21,15 +21,14 @@ class Bateria(ClassePsutil):
         
         ##soma 1-3
         self.funcao_qtimer_bateria_soma(int(nivel_bateria))
-
-    ###############################################
-    """                 RAM                     """
     
-    def ram_psutil(self):
+   
 
-        nivel_ram = self.psutil_ram()
+       
+    
+    
 
-        self.ram_labelr1(nivel_ram)
+
          
        
         
