@@ -2,6 +2,7 @@
 class VariaveisInit:
 
     IMAGEM_ICONE = '/home/waghtom/Downloads/CTRL-C/envs/hardware/qt_hard/Objetos/img_bateria.png'
+    IMAGEM_CONFIG = '/home/waghtom/Downloads/CTRL-C/envs/hardware/qt_hard/Objetos/ico_conf1.png'
 
     VAV_QTIME_BATERIA = 0
     VAV_QTIME_RAM = 0

@@ -123,8 +123,23 @@ class ClassePsutil:
        
     ###############################################
     """                 disco                   """
+    def disco_psutil(self):
 
-    '''for fo in particao:
+        list_maxd = []
+        list_usadd = []
+        list_particao = []
 
-    particao1 = psutil.disk_usage(fo.mountpoint)
-    print("{},{}\n".format(particao1.total,particao1.used))'''
+        particao = psutil.disk_partitions()
+        
+        for fo in particao:
+
+            li = fo.mountpoint
+
+            list_particao.append(li)
+
+            particao1 = psutil.disk_usage(li)
+
+            list_maxd.append(particao1.total)
+            list_usadd.append(particao1.used)
+            
+        return list_particao,list_maxd,list_usadd

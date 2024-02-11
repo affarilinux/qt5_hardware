@@ -21,11 +21,19 @@ class ClassQTime:
     """
     def qtimer_loop5(self):
 
+        ## whideget
         self.funcao_qtimer_bateria()
         self.funcao_qtimer_ram()
         self.FC_pt_temperatura()
         self.FC_pcprocessador()
         self.leitura_fans()
+        self.disco_processo()
+
+        ##datetime
+        self.data_processo()
+        self.hora_processo()
+        self.semana_processo()
+        
     """
         execusao som
     """

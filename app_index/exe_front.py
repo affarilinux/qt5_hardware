@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel
+from PyQt5.QtWidgets import QPushButton, QLabel,QToolButton
+from PyQt5.QtGui     import QIcon
+from PyQt5.QtCore    import QSize
 
+from class_universe.variaveis_init import VariaveisInit
 
 class ExeFront(QMainWindow):
 
@@ -186,35 +189,51 @@ class ExeFront(QMainWindow):
     def widget_movel_HD(self):
         
         self.LABEL_hd = QLabel( self)  ## nivel coooller
-        self.LABEL_hd.setText("100.90 %")
         self.LABEL_hd.setGeometry(10, 400,150, 50) 
         self.LABEL_hd.setStyleSheet(
             "color: #FFD700; font: bold; font-size: 20px ")
         
+        self.LABEL_hd1 = QLabel( self)  ## mb
+        self.LABEL_hd1.setGeometry(150, 400,150, 50) 
+        self.LABEL_hd1.setStyleSheet(
+            "color: #FFD700; font: bold; font-size: 14px ")
+        
+        self.LABEL_hd2 = QLabel( self)  ## mb
+        self.LABEL_hd2.setGeometry(140, 370,150, 50) 
+        self.LABEL_hd2.setStyleSheet(
+            "color: #FF0000; font: bold; font-size: 14px ")
+        
     def widget_movel_crono(self):
 
         self.LABEL_data = QLabel( self)  ## nivel coooller
-        self.LABEL_data.setText("25.01.23")
         self.LABEL_data.setGeometry(10, 435,100, 50) 
         self.LABEL_data.setStyleSheet(
-            "color: #FFD700; font: bold; font-size: 14px ")
+            "color: #00FFFF; font: bold; font-size: 14px ")
         
         self.LABEL_semana = QLabel( self)  ## nivel coooller
-        self.LABEL_semana.setText("Segunda")
         self.LABEL_semana.setGeometry(100, 435,100, 50) 
         self.LABEL_semana.setStyleSheet(
-            "color: #FFD700; font: bold; font-size: 14px ")
+            "color: #00FFFF; font: bold; font-size: 14px ")
         
         self.LABEL_hora = QLabel( self)  ## nivel coooller
-        self.LABEL_hora.setText("12:40")
         self.LABEL_hora.setGeometry(200, 435,100, 50) 
         self.LABEL_hora.setStyleSheet(
-            "color: #FFD700; font: bold; font-size: 14px ")
+            "color: #00FFFF; font: bold; font-size: 14px ")
         
     def widget_janela(self):
 
-        self.BUTON_janela = QPushButton( self) 
+        '''self.BUTON_janela = QPushButton( self) 
         self.BUTON_janela.setGeometry(240, 10, 50,50) 
+        self.BUTON_janela.setStyleSheet(
+            "border-radius : 25;  color: #FFFF00; font: bold; font-size: 12px;border : 3px solid #FFFF00")
+        #self.BUTON_janela.clicked.connect(self.J_P)'''
+
+        icom = QIcon(VariaveisInit.IMAGEM_CONFIG)
+        
+        self.BUTON_janela = QToolButton( self) 
+        self.BUTON_janela.setGeometry(240, 10, 50,50) 
+        self.BUTON_janela.setIcon(icom)
+        self.BUTON_janela.setIconSize(QSize(50,50))
         self.BUTON_janela.setStyleSheet(
             "border-radius : 25;  color: #FFFF00; font: bold; font-size: 12px;border : 3px solid #FFFF00")
         #self.BUTON_janela.clicked.connect(self.J_P)

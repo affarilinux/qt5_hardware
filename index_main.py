@@ -14,7 +14,8 @@ from app_index.processo_widget.processo_bateria1 import Bateria
 from app_index.processo_widget.proceso_temperatura import ProcessoTemperatura
 from app_index.processo_widget.proceso_processador import ProcessoProcessador
 from app_index.processo_widget.processo_cooler  import ProcessadorCoooler
-
+from app_index.processo_widget.processo_disco import ProcessoDisco
+from app_index.processo_widget.processo_data import ProcessoData
 from janela_key.key import KeyBoard
 from Objetos.class_som import Som
 
@@ -22,7 +23,10 @@ class Principal(
     ExeFront,Bateria,ExeIndexBeck,
     KeyBoard,Som, ProcessoTemperatura,
     ClassQTime,ProcessoBateria,ProcessoRam,
-    ProcessoProcessador,ProcessadorCoooler,QMainWindow):
+    ProcessoProcessador,ProcessadorCoooler,
+    ProcessoDisco,ProcessoData,
+    
+    QMainWindow):
 
     def __init__(self):
         

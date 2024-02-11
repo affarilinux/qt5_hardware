@@ -79,5 +79,35 @@ class ExeIndexBeck:
 
         self.LABEL_coo.setText("{}".format(fans_sis1))
 
+    """
+        EXECUÇÃO DOS FRONT DE VARIAVEIS
+        DISCO
+    """
 
-                
+    def disco_label_ef(self,ds):   
+
+        self.LABEL_hd.setText("{} %".format(ds))
+
+    def disco_label_ef_mb(self,mbd):
+
+        self.LABEL_hd1.setText("{} mb".format(mbd))
+
+    def disco_label_ef_if(self,part,porc):
+        self.LABEL_hd2.setText('{} {} %'.format(part,porc))
+
+    """
+        EXECUÇÃO DOS FRONT DE VARIAVEIS
+        data
+    """
+
+    def data_label(self,dia,mes,ano):
+
+        self.LABEL_data.setText("{}.{}.{}".format(dia,mes,ano))
+
+    def hora_label(self,hr,mn):
+
+        self.LABEL_hora.setText("{}:{}".format(hr,mn))
+    
+    def semana_label_(self,semana):
+
+        self.LABEL_semana.setText("{}".format(semana))
